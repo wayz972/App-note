@@ -8,6 +8,10 @@
 .visible-nav {
   transform: translateX(0px)!important;
 }
+.dots{
+  visibility: hidden ;
+  height: 87px;
+}
 .sidebar {
   flex-shrink: 0;
   width: 110px;

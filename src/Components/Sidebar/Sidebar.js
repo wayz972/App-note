@@ -14,6 +14,7 @@ export default function Sidebar() {
   const checkWidthFunc = () => {
     console.log("resize", window.innerWidth)
     setChekWidth(window.innerWidth)
+   
   };
 
   // hook
@@ -27,41 +28,54 @@ export default function Sidebar() {
 
   }, []);
 
+
+  const [toggleNav,setTogleNav]=useState(false)
+  const toggleNavbar=()=>{
+    setTogleNav(!toggleNav)
+    console.log(toggleNav)
+  }
+
   return (
     <>
       {
         checkWidth < 900 && (
-          <button className="toggle-nav-btn">
+          <button
+          onClick={toggleNavbar}
+           className="toggle-nav-btn">
             <img src={Menu} alt="logo menu" />
           </button>
 
         )
       }
 
-      <nav className='container-sidebar'>
+      <nav className={
+        toggleNav? "container-sidebar visible-nav":"container-sidebar"
+      }>
         <div className="sidebar">
 
-          <div className='three-dots'>
+          <div className="three-dots"
+          >
             <div className="dot-nav d-red"></div>
             <div className="dot-nav d-yellow"></div>
             <div className="dot-nav d-green"></div>
 
           </div>
           <ul>
-            {/* <Link to="/"> */}
+             <Link to="/"> 
             <li>
               <img src={FolderIcon} alt="logo folder" />
             </li>
-            {/* </Link> */}
-            {/* <Link to="edit"> */}
+             </Link> 
+             <Link to="edit"> 
             <li>
               <img src={LogoEdit} alt="logo edit" />
             </li>
-            {/* </Link><Link to="/"> */}
+             </Link>
+             <Link to="/"> 
             <li>
               <img src={Tools} alt="logo tools" />
             </li>
-            {/* </Link> */}
+             </Link> 
 
           </ul>
         </div>
