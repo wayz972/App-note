@@ -5,6 +5,7 @@ import FolderIcon from "./ImgsSidebar/folder.svg"
 import Tools from "./ImgsSidebar/settings.svg"
 import Menu from "./ImgsSidebar/menu.svg"
 import './Sidebar.css'
+import Sidenotes from '../SideNotes/Sidenotes'
 export default function Sidebar() {
 
   // i create usestate for size window 
@@ -79,6 +80,8 @@ export default function Sidebar() {
 
           </ul>
         </div>
+
+        <Sidenotes/>
       </nav>
 
 

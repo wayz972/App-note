@@ -22,3 +22,14 @@ const INITIAL_STATE = {
     },
   ],
 };
+
+
+
+
+ export default function notesReducer(state=INITIAL_STATE ,action){
+
+ switch (action.type) {
+ 
+ }
+ return state;
+}
