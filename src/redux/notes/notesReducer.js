@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-
+// (1) je crée les valeurs de mon state ici
 const INITIAL_STATE = {
   notes: [
     {
@@ -21,11 +21,18 @@ const INITIAL_STATE = {
       id: uuidv4(),
     },
   ],
+  
+  
 };
 
 
 
+ 
 
+     
+
+
+//j'exporte mon state vers mon mon store
  export default function notesReducer(state=INITIAL_STATE ,action){
 
  switch (action.type) {
