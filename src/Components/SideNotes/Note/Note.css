@@ -14,8 +14,8 @@
 }
 
 .bloc-note-left  p:first-of-type {
-    padding-top: 5px;
-    font-size: 30px;
+    padding-top: 15px;
+    font-size: 25px;
 }
 .bloc-note-left  p:nth-child(1) {
     width:300px;

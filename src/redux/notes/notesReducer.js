@@ -27,15 +27,16 @@ const INITIAL_STATE = {
 
 
 
- 
-
-     
-
-
 //j'exporte mon state vers mon mon store
- export default function notesReducer(state=INITIAL_STATE ,action){
+ export default function notesReducer(state = INITIAL_STATE ,action){
 
  switch (action.type) {
+  case 'DELETENOTE':{
+      // I copy new array in newnote
+    const newNote = [...state.notes].filter(item => item.id !== action.payload);
+
+    return { notes:newNote}
+  }
  
  }
  return state;
