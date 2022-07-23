@@ -31,6 +31,14 @@ const INITIAL_STATE = {
  export default function notesReducer(state = INITIAL_STATE ,action){
 
  switch (action.type) {
+
+case "ADDNOTE" :{
+  const newNote =[...state.notes]
+  newNote .push(action.payload)
+  return { notes:newNote}
+}
+
+
   case 'DELETENOTE':{
       // I copy new array in newnote
     const newNote = [...state.notes].filter(item => item.id !== action.payload);

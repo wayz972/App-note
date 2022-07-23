@@ -20,6 +20,16 @@ export default function Note(props) {
     })
 
   }
+  
+// envoie mes data props vers mon selected reducer initialiser vide 
+  const modifynote=()=>{
+    
+    dispatch({
+      type:'VISUALISERNOTE',
+      payload:props
+    })
+
+  }
   return (
     <li className='txt-note-prev'>
       <div className="bloc-note-left">
@@ -32,9 +42,13 @@ export default function Note(props) {
         >
           <img src={remove} alt="delete" />
         </button>
-        <button>
+        
+        <Link to="/edit">
+        <button
+       onClick={modifynote}>
           <img src={edit} alt="" />
         </button>
+         </Link>
       </div>
 
     </li>

@@ -13,27 +13,34 @@ export default function Sidebar() {
 
   // function which update chekwidth
   const checkWidthFunc = () => {
-    console.log("resize", window.innerWidth)
+    
     setChekWidth(window.innerWidth)
-   
+
   };
+
+
 
   // hook
   // allows use addvenlistener with the method 'resize'
   useEffect(() => {
     window.addEventListener('resize', checkWidthFunc);
     //always  remove addvevenlistener
+
+
+
     return () => {
       window.removeEventListener("resize", checkWidthFunc)
+
     }
+
 
   }, []);
 
 
-  const [toggleNav,setTogleNav]=useState(false)
-  const toggleNavbar=()=>{
+  const [toggleNav, setTogleNav] = useState(false)
+  const toggleNavbar = () => {
     setTogleNav(!toggleNav)
-    console.log(toggleNav)
+
   }
 
   return (
@@ -41,8 +48,8 @@ export default function Sidebar() {
       {
         checkWidth < 900 && (
           <button
-          onClick={toggleNavbar}
-           className="toggle-nav-btn">
+            onClick={toggleNavbar}
+            className="toggle-nav-btn">
             <img src={Menu} alt="logo menu" />
           </button>
 
@@ -50,8 +57,8 @@ export default function Sidebar() {
       }
 
       <nav className={
-        toggleNav? "container-sidebar visible-nav":"container-sidebar"
-      }>
+        toggleNav ? "container-sidebar visible-nav" : "container-sidebar"
+      } >
         <div className="sidebar">
 
           <div className="three-dots"
@@ -62,26 +69,26 @@ export default function Sidebar() {
 
           </div>
           <ul>
-             <Link to="/"> 
-            <li>
-              <img src={FolderIcon} alt="logo folder" />
-            </li>
-             </Link> 
-             <Link to="edit"> 
-            <li>
-              <img src={LogoEdit} alt="logo edit" />
-            </li>
-             </Link>
-             <Link to="/"> 
-            <li>
-              <img src={Tools} alt="logo tools" />
-            </li>
-             </Link> 
+            <Link to="/">
+              <li>
+                <img src={FolderIcon} alt="logo folder" />
+              </li>
+            </Link>
+            <Link to="edit">
+              <li>
+                <img src={LogoEdit} alt="logo edit" />
+              </li>
+            </Link>
+            <Link to="/">
+              <li>
+                <img src={Tools} alt="logo tools" />
+              </li>
+            </Link>
 
           </ul>
         </div>
 
-        <Sidenotes/>
+        <Sidenotes />
       </nav>
 
 

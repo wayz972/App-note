@@ -2,8 +2,9 @@
   display: flex;
   transition: transform 0.2s ease-out;
   position: absolute;
-  left: 0;
+  left:0px;
   z-index: 100;
+  
 }
 .visible-nav {
   transform: translateX(0px)!important;
@@ -81,6 +82,7 @@
   }
   .sidebar {
     width: 80px;
+    
   }
   .sidebar ul li img {
     width: 30px;
