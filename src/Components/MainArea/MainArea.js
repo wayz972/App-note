@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState} from 'react'
 import './MainArea.css'
-import { useDispatch, useSelector, UseSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { v4 as uuidv4 } from "uuid";
 export default function MainArea() {
   // je crée un objet et j'ajoute des valeurs
@@ -28,62 +28,74 @@ export default function MainArea() {
 
   }, [selected])// je surveille la variable
 
-  const [validation, SetValidation] = useState(true)//afficher un message error
+  const [validation, SetValidation] = useState(true)//afficher un message error dans un span
 
-
-
-  // je transmet mets information vers notereducer grace a dispatch
+  console.log(selected.title)
   const dispatch = useDispatch()
 
   const handleForm = (e) => {
     e.preventDefault()
-    
-    if (InputInfo.title.length < 1) {
 
-      return SetValidation(false)
+    if (selected.toggle) {
+
+      if (update.title.length < 1) {
+        return SetValidation(false)
+
+      }
+      //sinon jappel dispatch j'envoie les info vers noteRducer
+      SetValidation(true)
+      dispatch({
+        type: "UPDATENOTE",
+        payload: update
+      })
+      dispatch({
+        type: "RESETNOTE",
+
+      })
+      Setupdate({
+        title: "",
+        subtitle: "",
+        body: "",
+      })
+    } else if (!selected.toggle) {
+      if (InputInfo.title.length < 1) {
+
+        return SetValidation(false)
+
+      }
+      //sinon jappel dispatch j'envoie les info vers noteRducer
+      SetValidation(true)
+      dispatch({
+        type: "ADDNOTE",
+        payload: { ...InputInfo, id: uuidv4() }
+      })
+      SetInput({
+        title: "",
+        subtitle: "",
+        body: "",
+      })
 
     }
-    //sinon jappel dispatch j'envoie les info vers noteRducer
-    SetValidation(true)
-    dispatch({
-      type: "ADDNOTE",
-      payload: { ...InputInfo, id: uuidv4() }
-    })
-    SetInput({
-      title: "",
-      subtitle: "",
-      body: "",
-    })
+
+
 
   }
 
 
-  const recupInput = useRef([])
-
-  const addInput = (value) => {
-  
-    if (value && recupInput.current.includes(value)) {
-      recupInput.current.push(value)
-      
-    }
-
-  }
   //je relie mes input a mon state databinding
   const updateInput = (e) => {
     //je lui passe la valeur des id
     const actualInp = e.target.getAttribute("id")//je recupere la valeur des id
 
-
-
     if (selected.toggle) {
 
       const newobState = { ...update, [actualInp]: e.target.value }
-      
+
       Setupdate(newobState)
 
     } else if (selected.toggle == false) {
-
-      const newobState = {...InputInfo,[actualInp]: e.target.value} 
+  console.log("qq",selected.toggle)
+      const newobState = { ...InputInfo, [actualInp]: e.target.value }
       console.log(newobState)
       console.log(InputInfo)
       SetInput(newobState)
@@ -103,7 +115,7 @@ export default function MainArea() {
           id="title"
           onChange={updateInput}
           value={update.toggle ? update.title : InputInfo.title}
-          ref={addInput} />
+           />
 
         {!validation && (
 
@@ -117,7 +129,7 @@ export default function MainArea() {
           id="subtitle"
           onChange={updateInput}
           value={update.toggle ? update.subtitle : InputInfo.subtitle}
-          ref={addInput} />
+          />
 
 
 
@@ -129,7 +141,7 @@ export default function MainArea() {
           placeholder='votre texte...'
           onChange={updateInput}
           value={update.toggle ? update.body : InputInfo.body}
-          ref={addInput}></textarea>
+          ></textarea>
 
         <button type="submit">Enregistrer</button>
       </form>

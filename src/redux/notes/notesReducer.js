@@ -36,6 +36,16 @@ case "ADDNOTE" :{
   const newNote =[...state.notes]
   newNote .push(action.payload)
   return { notes:newNote}
+  
+}
+case "UPDATENOTE":{
+  const newNote =[...state.notes]
+  const newobj= action.payload;
+   const index =newNote.findIndex(item=>item.id===newobj.id)
+   //fincdindex =>chercher lindex du tableau
+   newNote.splice(index,1,newobj)
+   // replaces 1 element at l'index trouver
+   return { notes:newNote}
 }
 
 
