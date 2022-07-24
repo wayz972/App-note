@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './SideNotes.css'
-import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import MesNotes from './Note/Note'
 export default function Sidenotes() {
   // (3)je recupere les informations avec useSelector  de mon state situer dans noteReducer

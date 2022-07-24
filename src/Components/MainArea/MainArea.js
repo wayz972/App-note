@@ -93,7 +93,7 @@ export default function MainArea() {
 
       Setupdate(newobState)
 
-    } else if (selected.toggle == false) {
+    } else if (selected.toggle === false) {
   console.log("qq",selected.toggle)
       const newobState = { ...InputInfo, [actualInp]: e.target.value }
       console.log(newobState)
